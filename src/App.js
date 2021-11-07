@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Hero from "./Hero";
+import FullCard from "./FullCard";
 
 function App() {
+  const data = [
+    {
+      title: "HTML",
+      description: "This is HTML",
+    },
+    {
+      title: "CSS",
+      description: "This is CSS",
+    },
+    {
+      title: "JavaScript",
+      description: "This is JavaScript",
+    },
+    {
+      title: "React",
+      description: "This is React",
+    },
+    {
+      title: "Vue",
+      description: "This is Vue",
+    },
+    {
+      title: "Angular",
+      description: "This is Angular",
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Hero data={data} />} />
+        <Route path="/cards/:title" element={<FullCard data={data} />} />
+      </Routes>
+    </Router>
   );
 }
 
